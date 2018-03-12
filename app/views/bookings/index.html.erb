@@ -1,9 +1,11 @@
 <h1>All Bookings</h1>
 
+<p><%= link_to "Add Booking", new_booking_path %></p>
+
 
 <% @bookings.each do |booking| %>
   <div>
-      <h4><%= booking.idnumber %></h4>
+      <h4><%= link_to booking.idnumber, booking_path(booking) %></h4>
       <p><%= booking.firstname %><p>
       <p><%= booking.lastname %><p>
       <p><%= booking.booking_for %><p>
