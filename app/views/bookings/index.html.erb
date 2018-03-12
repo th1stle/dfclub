@@ -1,0 +1,12 @@
+<h1>All Bookings</h1>
+
+
+<% @bookings.each do |booking| %>
+  <div>
+      <h4><%= booking.idnumber %></h4>
+      <p><%= booking.firstname %><p>
+      <p><%= booking.lastname %><p>
+      <p><%= booking.booking_for %><p>
+      <p><%= booking.clubname %>, <%= booking.location %></p>
+  </div>
+<% end %>
