@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+    #before calling the below actions you must first call the set booking method#
+    before_action :set_booking, only: [:show, :edit, :update, :destroy]
+    
     
     def index
       @bookings = Booking.all
@@ -27,7 +30,7 @@ class BookingsController < ApplicationController
     end
     
     def edit
-        @booking = Booking.find(params[:id])
+        #@booking = Booking.find(params[:id])
     end
     
     def update
@@ -53,6 +56,16 @@ class BookingsController < ApplicationController
         
     
     private
+    
+      def set_booking
+        @booking = Booking.find(params[:id])
+        
+      rescue ActiveRecord::RecordNotFound
+        flash[:alert] = "The page you just requested does not exist"
+        redirect_to bookings_path
+      end
+          
+          
     def booking_params
         params.require(:booking).permit(:idnumber, :firstname, :lastname, :phone, :booking_for, :clubname, :location)
     end
