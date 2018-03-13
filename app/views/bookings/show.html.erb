@@ -1,3 +1,4 @@
+ <% provide(:lastname, @booking.lastname) %>
  <h1><%= @booking.idnumber %></h1>
 
  <div>
@@ -9,7 +10,7 @@
     
     <p><%= @booking.phone %></p>
     
-    <p><%= @booking.booking_for %></p>
+    <p><%= time_format(@booking.booking_for) %></p>
     
     <p><%= @booking.clubname %></p>
      
