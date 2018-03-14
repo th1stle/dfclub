@@ -7,9 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
+<!-- Below container class puts the effect on all pages -->  
+<div class="container">
+  <%= yield %> 
+</div>
 
-<%= yield %>
+
 
 </body>
 </html>
