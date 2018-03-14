@@ -1,0 +1,45 @@
+<% if booking.errors.any? %>
+ <div id="errors_explanataion">
+   <h2><%= pluralize(booking.errors.count, "error") %> prohibited this event from being saved:</h2>
+ 
+   <ul>
+    <% booking.errors.full_messages.each do |message| %>
+     <li><%= message %></li>
+    <% end %>
+   </ul>
+</div>
+<% end %>
+
+<%= form_for(booking) do |f| %>
+
+<div>
+    <%= f.label :idnumber %>
+    <%= f.text_field :idnumber %>
+</div>
+<div>
+    <%= f.label :firstname %>
+    <%= f.text_area :firstname %>
+</div>
+<div>
+    <%= f.label :lastname %>
+    <%= f.text_area :lastname %>
+</div>
+<div>
+    <%= f.label :phone %>
+    <%= f.text_area :phone %>
+</div>
+<div>
+    <!-- User selects current year and prompt user for AM or PM -->
+    <%= f.label :booking_for %>
+    <%= f.datetime_select(:booking_for, order: [:day, :month, :year], start_year: Date.current.year, ampm: true, prompt: true) %>
+</div>
+<div>
+    <%= f.label :clubname %>
+    <%= f.text_field :clubname %>
+</div>
+<div>
+    <%= f.label :location %>
+    <%= f.text_field :location %>
+</div>
+<%= f.submit %>+
+<% end %>
