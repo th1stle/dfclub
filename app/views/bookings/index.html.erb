@@ -1,14 +1,38 @@
-<h1>All Bookings</h1>
+<header>
+  <h1>All Bookings</h1>
+  
+  <ul class="actions">
+    <li><%= link_to "New Booking", new_booking_path, class: "new" %></ul>
+  </ul>
+</header>
 
-<p><%= link_to "Add Booking", new_booking_path %></p>
-
-
-<% @bookings.each do |booking| %>
-  <div>
-      <h4><%= link_to booking.idnumber, booking_path(booking) %></h4>
-      <p><%= booking.firstname %></p>
-      <p><%= booking.lastname %></p>
-      <p><%= time_format(booking.booking_for) %> <%= fa_icon "camera-retro" %></p>
-      <p><%= booking.clubname %>, <%= booking.location %></p>
+<div class= "row">
+  <div class="col -sm-3 pull-right">
+    <div class="sidebar">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="<%= "active" if current_page?("/bookings")%>"><%= link_to "ALL BOOKINGS", bookings_path%></li>
+      </ul>
+    </div>
   </div>
+</div>
+
+<div class="col-sm-9">
+<h3>Register here for your chosen DF social club</h3>
+</div>
+<% @bookings.each do |booking| %>
+  <div class="col-sm-9 pull-left">
+    <%= link_to booking_path(booking) do %>
+    <div class="bookings"
+    <div class="col-sm-9">
+      <h3 class="booking_for"><%= booking.idnumber %></h3>
+      <p class="lead-time">
+        <span class="booking-start"><%= time_format(booking.booking_for) %></span>
+        <span class="pull-right">Organized by:</span>
+      </p>
+    </div>
+   </div>
+  </div>
+<% end %>
+
+</div>
 <% end %>

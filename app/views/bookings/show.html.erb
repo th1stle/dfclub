@@ -1,6 +1,19 @@
  <% provide(:lastname, @booking.lastname) %>
- <h1><%= @booking.idnumber %></h1>
-
+ <header>
+  <h1 id="show-title"><%= @booking.idnumber %></h1>
+  <ul class="actions">
+   <li><%= link_to "Edit Booking", edit_booking_path(@booking), class: "edit" %></li>
+   <li><%= link_to "Delete Booking", booking_path(@booking), method: :delete, data: {confirm: "Are you sure?"}, class: "delete" %></li>
+  </ul>
+ </header>
+     
+     <div class="booking-details">
+      <h3>Booking Details</h3>
+      <p><%= @booking.lastname %></p>
+     </div>
+  </div>
+</div>
+ 
  <div>
      <p><%= @booking.idnumber %></p>
     

@@ -1,7 +1,8 @@
+<div class="row">
+    <div class="col-sm-8 clo-sm-offset-2">
+
 
 <%= simple_form_for(booking) do |f| %>
-
-<%= f.input :booking_for %>
 
 <%= f.input :firstname %>
 
@@ -11,10 +12,20 @@
 
 <%= f.input :booking_for, as: :datetime, start_year: Date.today.year, ampm: true, order: [:day, :month, :year] %>
 
-<%= f.input :clubname %>
+<div class="field"><br>
+    <%= f.label :Clubname %><br>
+    <%= f.select :clubname, [['Aiken'],['Casement'],['Cathal Brugha'],['Collins']] %>
+ </div>
 
-<%= f.input :location %>
+<div class="field"><br>
+    <%= f.label :Clublocation %><br>
+    <%= f.select :location, [['Dundalk'],['Baldonnel'],['Dublin'],['Cork']] %>
+  </div>
 
 <%= f.button :submit, class: "btn btn-primary" %>
 
 <% end %>
+
+ <p><%= link_to "Back", bookings_path %></p>
+  </div>
+</div>
